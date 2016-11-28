@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+    <title>Sistema de Noticias</title>
+
+    <link type="text/css" rel="stylesheet" href="css/demo.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+</head>
+<body ng-app="mainApp" ng-controller="mainCtrl">
+    <div id="titulo">{{ titulo }}</div>
+    <div id="page">
+        <div class="header">
+            <a href="#menu"><span></span></a>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li ng-repeat="menu in menus">
+                    <a ng-click="acessaMenu(menu)"> <i class="fa {{ menu.icone }}"></i> {{ menu.nome }}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="conteudo">
+
+        <!-- template de feeds -->
+        <div ng-show="template == 'feeds'">
+            <h2 class="feeds"> AQUI É A PÁGINA FEEDS DO APLICATIVO</h2>
+        </div>
+
+        <!-- template de feeds -->
+        <div ng-show="template == 'rank'">
+            <h2 class="feeds"> AQUI É A PÁGINA CLASSIFICAÇÃO DO APLICATIVO</h2>
+        </div>
+
+        <!-- template de feeds -->
+        <div ng-show="template == 'tabela'">
+            <h2 class="feeds"> AQUI É A PÁGINA TABELA DO APLICATIVO</h2>
+        </div>
+
+    </div>
+
+
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/jquery.mmenu.all.min.js?v=5.7.8"></script>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#menu').mmenu();
+        });
+
+        var app = angular.module('mainApp', []);
+        app.controller('mainCtrl', principalCtrl);
+
+        function principalCtrl($scope)
+        {
+            $scope.menus = [
+                {nome: 'Feeds', icone: 'fa-newspaper-o', template: 'feeds'},
+                {nome: 'Classificação', icone: 'fa-trophy', template: 'rank'},
+                {nome: 'Tabela', icone: 'fa-table', template: 'tabela'},
+                {nome: 'Estatísticas', icone: 'fa-bar-chart', template: 'stats'},
+                {nome: 'Vídeos', icone: 'fa-video-camera', template: 'videos'},
+                {nome: 'Redes Sociais', icone: 'fa-share-alt', template: 'social'},
+                {nome: 'Definições', icone: 'fa-cog', template: 'definicoes'}
+            ];
+            $scope.template = 'feeds';
+            $scope.titulo = 'Feeds';
+
+            $scope.acessaMenu = trocaPagina;
+
+            function trocaPagina(item) {
+                $scope.template = item.template;
+                $scope.titulo = item.nome;
+            }
+        }
+    </script>
+</body>
+</html>

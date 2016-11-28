@@ -11,13 +11,15 @@
 		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
         <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.js"></script>
-		<script type="text/javascript" src="js/jquery.mmenu.all.min.js"></script>
-		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<!--		<script type="text/javascript" src="js/jquery.mmenu.all.min.js"></script>-->
+<!--        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+        <script type="text/javascript" src="http://mmenu.frebsite.nl/mmenu/js/jquery.mmenu.all.min.js?v=5.7.8"></script>
+<!--		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>-->
 
 		<script type="text/javascript">
-			$(function() {
-				$('nav#menu').mmenu();
-			});
+            $(document).ready(function () {
+                $('#menu').mmenu();
+            });
 		</script>
 	</head>
 	<body>
