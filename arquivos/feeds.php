@@ -1,0 +1,1 @@
+<h2 class="feeds"> AQUI É A PÁGINA FEEDS DO APLICATIVO</h2>
